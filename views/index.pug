@@ -1,0 +1,11 @@
+extends ./layouts/base.pug 
+block title
+    title Index
+block content
+    .container.mt-5
+        .card
+            .card-body
+                h1.text-center Welcome to task app
+                div.d-flex.justify-content-around
+                    a(href="/user/signup") Signup
+                    a(href="/user/login") Login  

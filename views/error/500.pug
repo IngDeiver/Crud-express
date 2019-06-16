@@ -1,0 +1,9 @@
+extends ../layouts/base.pug
+block content 
+    div(class='container mt-5')
+        div(class='card')
+            div(class='card-body')
+            h1(class='text-center') Error interno del servidor
+            h2(class='text-center')  Lo sentimos ocurrio un error inesperado
+            p(class='text-center')  #{error.message}
+            

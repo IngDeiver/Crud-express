@@ -1,0 +1,42 @@
+extends ../layouts/base.pug
+
+block title 
+    title Tasks
+block content
+    .container.mt-5
+        .card
+            .card-body
+                h1.text-center.my-3 Task list
+                table.table.table-borderless
+                    thead.black.white-text
+                        tr
+                        th(scope='col') Title
+                        th(scope='col') Description
+                        th(scope='col') 
+                    tbody
+                        each task in task_list
+                            tr
+                                td= task.title
+                                td= task.description
+                                td 
+                                    .d-flex.justify-content-around
+                                        a(href="/task/remove/" + task.id class="btn btn-danger") Delete
+                                        a(href="/task/update/" + task.id class="btn btn-warning") Edit
+                        else
+                            td Empty tasks
+                           
+                        
+                            
+                            
+
+                hr
+                a(href="/user/logout") Logout
+        .my-5
+            h1.text-center Add new task 
+            form(action="/task/create" method="POST")
+                .form-group
+                    input(type="text", name="title" class="form-control" placeholder="Title")
+                .form-group
+                    textarea(name="description", cols="30", rows="10"  class="form-control") Description
+                button(type="submit" class="btn ") Add
+                    

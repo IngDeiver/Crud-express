@@ -1,0 +1,21 @@
+extends ../layouts/base.pug
+block title
+    title Signup
+block content 
+     .container.mt-5.d-flex.justify-content-center
+        <!-- Default form login -->
+        form(class="text-center border border-light p-5" action="/user/signup" method='post')
+            p(class="h4 mb-4") Signup
+            <!-- Email -->
+            input(type="email" name='email' class="form-control mb-4" placeholder="E-mail")
+            <!-- Password -->
+            input(type="password" name="password"  class="form-control mb-4" placeholder="Password")
+            div(class="d-flex justify-content-around")
+            <!-- Sign in button -->
+             - var messages= message
+            if  messages.length > 0
+                p(class="text-danger") #{message}
+            button(class="btn btn-info btn-block my-4" type="submit") Register
+            <!-- Register -->
+            p Is a member?
+                a(href="/user/login") Login
