@@ -25,11 +25,11 @@ passport.use('local-signup', new LocalStrategy({
             newUser.password = newUser.encryptPassword(password)
             newUser.save((err, user) => {
                 if (err)
-                    return done(err, false, req.flash('message', 'Error create user'))
+                    return done(err, false)
                 done(null, user)
             })
         }else{
-            return done(null,false, req.flash('message', 'User exist'))
+            return done(null,false)
         }
     }
   ));
@@ -41,11 +41,11 @@ passport.use('local-login', new LocalStrategy({
 }, (req, email, password, done) => {
     User.findOne({email: email}, (err, user) => {
         if (err)
-            return done(err,false, req.flash('message', 'Error login'))
+            return done(err,false)
         if (!user)
-             return done(null, false, req.flash('message', 'Credenciales incorrectas'))
+             return done(null, false)
         if (!user.comparePassword(password))
-            return done(null, false, req.flash('message', 'Credenciales incorrectas'))
+            return done(null, false)
         done( null, user)
     })
 }))
