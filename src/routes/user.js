@@ -8,12 +8,13 @@ router.get('/signup', UserController.signup)
 
 router.post('/signup', passport.authenticate('local-signup', { 
     successRedirect: '/task/list',
-    failureRedirect: '/user/signup'
-}))
+    failureRedirect: '/user/signup',
+    failureFlash: true }))
 
 router.post('/login', passport.authenticate('local-login',{
     successRedirect : '/task/list',
     failureRedirect : '/user/login',
+    failureFlash : true
 }))
 
 router.get('/login', UserController.login)
